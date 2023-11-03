@@ -88,27 +88,29 @@ var upperCasedCharacters = [
   "Z",
 ];
 
+var charset = [];
+var password = "";
+
+charset = [
+  ...upperCasedCharacters,
+  ...specialCharacters,
+  ...numericCharacters,
+  ...lowerCasedCharacters,
+];
+console.log(charset);
+
 function generatePassword() {
-  const passwordLength = prompt("Please enter the password length: ");
-  const charset = arr.push(
-    upperCasedCharacters,
-    lowerCasedCharacters,
-    specialCharacters,
-    numericCharacters
-  );
-  return;
-}
-
-if (passwordLength === null || isNaN(passwordLenth) || passwordLength < 1) {
-  alert("Invalid password length. Please enter a vaild number greater than 0");
-  return;
-}
-
-let password = "";
-
-for (let i = 0; i < passwordLength; i++) {
-  const randomIndex = Math.floor(Mathh.random() + charset.length);
-  password += charset.charsAt(randomIndex);
+  var passwordLength = prompt("How long would you like the password?");
+  if (passwordLength === null || isNaN(passwordLength) || passwordLength < 1) {
+    alert(
+      "Invalid password length. Please enter a vaild number greater than 0"
+    );
+  }
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * passwordLength);
+    password += charset[randomIndex];
+  }
+  return password;
 }
 
 // Get references to the #generate element
@@ -116,7 +118,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -124,12 +126,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-var charset = arr.push(
-  upperCasedCharacters,
-  lowerCasedCharacters,
-  numericCharacters,
-  specialCharacters
-);
-
-console.log(charset);
